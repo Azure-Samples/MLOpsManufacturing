@@ -27,7 +27,28 @@ The [Getting Started](#getting-started) section of this document will walk you t
 
 ## Problem Summary
 
-TODO: Finish this
+As we enter a world with more and more connectivity in all aspects of our lives
+more opportunities to leverage technology arise.
+One such use case that has seen a rapid rise in usage recently is running
+machine learning on edge devices.
+This particular sample shows how to set up object detection on edge devices
+and propagate that detection up to the cloud, where from there
+many different alerts can be set up.
+
+Some example use cases of this are safety scenarios at factories without much foot traffic:
+
+- Make sure no boxes are placed in a restricted danger zone
+- Make sure there are no fires or spills
+- Make sure no machines are jammed
+
+Other use cases could be to enforce rules, e.g. make sure only EV cars park in EV parking spaces.
+
+Lastly, some use cases can be more experimental and fun, e.g. trigger a notification
+any time a dog walks past your window :-).
+
+This sample lays out the infrastructure and pipelines for implementing all of those solutions
+and gives a full running implementation of detecting when a truck drives past your window.
+(But of course you can easily tweak that to be to detect whatever use case you want)
 
 ## Solution Summary
 
