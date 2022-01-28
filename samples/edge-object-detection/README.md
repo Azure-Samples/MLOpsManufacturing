@@ -52,7 +52,17 @@ and gives a full running implementation of detecting when a truck drives past yo
 
 ## Solution Summary
 
-TODO: finish this
+This sample solves this problem by utilizing Azure Video Analytics (AVA).
+At the time of creating this sample it was named Live Video Analytics (LVA), so any references to LVA refer to that.
+This solution takes in camera input and sends messages through IoT Hub
+to trigger any cloud based alerting functionality you want.
+
+This sample also sets up IaC pipelines for deploying all the needed resources,
+and CI/CD pipelines for the different components.
+
+The main component that will change with each use case is the python `objectDetectionBusinessLogic`
+which is responsible for choosing under which conditions certain object
+detections will trigger messages to the cloud.
 
 ## Products/Technologies/Languages Used
 
