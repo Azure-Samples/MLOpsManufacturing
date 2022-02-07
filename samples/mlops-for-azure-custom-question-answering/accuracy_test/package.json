@@ -1,7 +1,7 @@
 {
-  "name": "accuracy-test",
   "version": "1.0.0",
   "description": "QnA Bot Accuracy Batch Test Tool",
+  "private": true,
   "author": "Microsoft",
   "license": "MIT",
   "main": "./lib/evaluateAccuracy.js",
