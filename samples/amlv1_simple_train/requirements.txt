@@ -1,6 +1,6 @@
 azureml-core==1.48.0
 azureml-dataset-runtime==1.48.0
-azureml-mlflow=1.48.0
+azureml-mlflow==1.48.0
 azure-cli==2.43.0
 mlflow==2.0.1
 python-dotenv==0.21.0
