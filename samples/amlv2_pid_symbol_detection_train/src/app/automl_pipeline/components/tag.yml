@@ -1,0 +1,26 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+type: command
+
+name: tag_model
+display_name: Tags the best model
+description: Tags the best model
+
+inputs:
+  model_metadata_path:
+    type: uri_folder
+  model_base_name:
+    type: string
+
+outputs:
+  best_model_metadata_path:
+    type: uri_folder
+
+code: ../../pipeline_steps/tag_src
+command: >-
+  python -m main
+  --model-metadata-path ${{inputs.model_metadata_path}}
+  --model-base-name ${{inputs.model_base_name}}
+  --best-model-metadata-path ${{outputs.best_model_metadata_path}}
+environment:
+  conda_file: conda.yml
+  image: "mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04"

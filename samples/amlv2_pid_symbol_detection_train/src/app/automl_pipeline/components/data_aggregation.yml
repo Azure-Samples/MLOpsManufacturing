@@ -1,0 +1,31 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+type: command
+
+name: data_aggregation
+display_name: Aggregate MLTable data prior to training
+description: Aggregate MLTable data prior to training
+
+inputs:
+  input_image_data_path:
+    type: uri_folder
+  input_label_data_path:
+    type: uri_folder
+  input_images_string_absolute_path:
+    type: string
+  is_fast_training:
+    type: boolean
+outputs:
+  output_path:
+    type: mltable
+code: ../../pipeline_steps/data_aggregation_src
+command: >-
+  python -m main
+  --input-image-data-path ${{inputs.input_image_data_path}}
+  --input-label-data-path ${{inputs.input_label_data_path}}
+  --input-images-string-absolute-path ${{inputs.input_images_string_absolute_path}}
+  --is-fast-training ${{inputs.is_fast_training}}
+  --output-path ${{outputs.output_path}}
+environment:
+  conda_file: conda.yml
+  image: "mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04"
+is_deterministic: False

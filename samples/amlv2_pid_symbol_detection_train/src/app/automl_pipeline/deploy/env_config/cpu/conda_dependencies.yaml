@@ -1,0 +1,19 @@
+name: minimal
+channels:
+- conda-forge
+- defaults
+- anaconda
+- pytorch
+dependencies:
+- python=3.8.13
+- pip=22.1.2
+- pytorch==2.0.0
+- torchvision==0.15.0
+- cpuonly==2.0
+- cython==3.0.0
+- pycocotools==2.0.4
+- pip:
+  - mlflow==2.2.2
+  - pandas==2.0.0
+  - certifi==2022.12.07
+  - wheel==0.38.1
