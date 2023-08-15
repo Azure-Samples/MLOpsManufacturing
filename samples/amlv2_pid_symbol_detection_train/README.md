@@ -2,6 +2,8 @@
 
 This example demonstrates how to use Azure ML Python SDK v2 to train a symbol detection (yoloV5 model) using P&ID synthetic dataset.
 
+[Sample project documentation](./docs/README.md).
+
 __What does this sample demonstrate__:
 
 This sample allows the creation of an automated AML workflow that orchestrate the next six main steps:

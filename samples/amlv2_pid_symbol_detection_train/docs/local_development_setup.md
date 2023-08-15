@@ -34,14 +34,14 @@ To create a development (dev) container in VS Code 2 files are to be configured 
 1. Run **Docker desktop**.
 1. Clone this required repository and open it in VS code.
 1. When opening the code for first time, the dev container has to be built using **"Dev Containers: Rebuild and Reopen in Container"** command. This command will build the container image with the required packages from the config files discussed earlier. This would take few mins.
-![Rebuild and Reopen in Container](/docs/images/RebuildAndReopenContainer.jpg)
+![Rebuild and Reopen in Container](./images/RebuildAndReopenContainer.jpg)
 1. When editing the contents of the .devcontainer folder, developers need to rebuild for changes to take effect. Use the **"Dev Containers: Rebuild Container"** command from VS code command palette for your container to update. For everything else **"Dev Containers: Reopen Container"** should be used.
-![Rebuild in Container](/docs/images/RebuildContainer.jpg)
-![Reopen in Container](/docs/images/ReopenContainer.jpg)
+![Rebuild in Container](./images/RebuildContainer.jpg)
+![Reopen in Container](./images/ReopenContainer.jpg)
 1. **.env** file has to be created with the necessary resources information when setting up the environment for first time, **.env.sample** file provided in the repo provides the list of resources needed for the modules to run based of which the .env file can be created.
 1. **launch.json** in .vscode folder has the default configurations to be able to run/debug the independent python modules in the project. The file can be customised as needed during the implementation.
 1. Debugging can be done via VS code's **"Run and Debug"**. All the python modules listed in **launch.json** will be listed to be selected for running or debugging.
-![Debugging in VS code](/docs/images/Debug.jpg)
+![Debugging in VS code](./images/Debug.jpg)
 
 #### Running issues for Mac M1/M2 Users
 
