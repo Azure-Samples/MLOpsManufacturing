@@ -4,7 +4,7 @@
 
 An [Azure Machine Learning pipeline](https://learn.microsoft.com/en-us/azure/machine-learning/concept-ml-pipelines?view=azureml-api-2) is a tool that enables machine learning scientists to create, manage, and execute end-to-end machine learning workflows. It allows the creation of automated workflows that orchestrate machine learning tasks.
 
-In this symbol detection pipeline, there are four main steps:
+In this symbol detection pipeline, there are six main steps:
 
 1. **Data Aggregation:** This step involves aggregating the data required for training the machine learning model.
 
@@ -18,7 +18,7 @@ In this symbol detection pipeline, there are four main steps:
 
 1. **Tagging the Model:** Finally, the best performing model is tagged so that it can be easily identified and used for future tasks.
 
-By following these four key steps, the symbol detection pipeline can effectively automate the machine learning workflow, leading to efficient and effective results.
+By following these steps, the symbol detection pipeline can effectively automate the machine learning workflow, leading to efficient and effective results.
 
 ![AML pipeline flow diagram](./images/pipeline-workflow.png)
 
@@ -30,7 +30,7 @@ Once the Azure Machine Learning workspace is created, there are two required ste
 
     Azure ML compute provides dedicated compute resources to run any job submitted to an AML workspace. In this project, we use compute clusters, which are Azure-managed compute infrastructure resources that can be single or multi-node. The VM tier, type, and size can be specified at creation time and can be put into a Virtual Network to comply with any secure networking requirements.
 
-    For this pipeline, we [have decided](../docs/designs/decision-logs/aml-compute-setup.md) to provision both a CPU and a GPU compute cluster. The GPU cluster is required for training the image object detection model, and the CPU cluster will be the fallback compute for the other less compute-intensive jobs.
+    For this pipeline, we have decided] to provision both a CPU and a GPU compute cluster. The GPU cluster is required for training the image object detection model, and the CPU cluster will be the fallback compute for the other less compute-intensive jobs.
 
     Compute clusters will be created and managed via [Terraform](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/machine_learning_compute_cluster).
 
@@ -53,7 +53,7 @@ Once the Azure Machine Learning workspace is created, there are two required ste
     - `STORAGE_ACCOUNT_CONTAINER_NAME`: the container name that all images and labels will be stored:
 
     **NOTE**:
-    Any new images with the labels in jsonl format can be appended in the respective folders of the AML datastore. The pipeline will then pick up the new images with their labels and execute its steps as per the designed workflow. More information can be found [here](../docs/designs/decision-logs/1-managing-image-label-sets.md)
+    Any new images with the labels in jsonl format can be appended in the respective folders of the AML datastore. The pipeline will then pick up the new images with their labels and execute its steps as per the designed workflow.
 
     **Execution**
 
@@ -89,7 +89,7 @@ Once the Azure Machine Learning workspace is created, there are two required ste
 
 1. ### Data Split step
 
-    This step split the dataset from "Data Aggregation" step into tranining and validation dataset as MLtable. If `use_stratified_split` is set to `False`, there is no splitting conducted and the dataset from "Data Aggregation" step will used for later stage. 
+    This step split the dataset from "Data Aggregation" step into tranining and validation dataset as MLtable. If `use_stratified_split` is set to `False`, there is no splitting conducted and the dataset from "Data Aggregation" step will used for later stage.
 
     **Inputs**
 
@@ -115,7 +115,7 @@ Once the Azure Machine Learning workspace is created, there are two required ste
 
 1. ### Register Data Asset step
 
-    This step first uploads the aggregated MLTable file to the AML datastore and then registers it as a dataset in the AML workspace. After the registeration, the data asset url in the AML standard format is returned to the register model step. 
+    This step first uploads the aggregated MLTable file to the AML datastore and then registers it as a dataset in the AML workspace. After the registeration, the data asset url in the AML standard format is returned to the register model step.
 
     **Inputs**
 

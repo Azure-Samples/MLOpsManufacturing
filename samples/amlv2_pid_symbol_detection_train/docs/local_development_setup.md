@@ -3,6 +3,7 @@
 This section will provide information on the installations/extensions that developers will need to install/examine to be able to run/debug the python modules for the repo. Here, we assume that Visual studio code will be used as development IDE.
 
 ## Table of contents
+
 1. [Docker Desktop](#docker-desktop)
 1. [Dev container VS code extensions](#dev-container-vs-code-extensions)
 1. [Dev container setup](#what-is-needed-to-set-up-the-dev-container)
