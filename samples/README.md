@@ -34,6 +34,7 @@ principles which are covered
 |Sample|CI/CD (AML pipeline)|CI/CD (ML model)|Use of AML pipelines|Model Training|
 |----|----|----|----|----|
 |[Azure ML Python SDK v1 Basic Training](./amlv1_simple_train)|:x:|:x:|:x:|:heavy_check_mark:|
+|[Azure ML Python SDK v2 P&ID Symbol Detection Training](./amlv2_pid_symbol_detection_train/)|:x:|:x:|:heavy_check_mark:|:heavy_check_mark:|
 |[Appendable AML Pipeline Step Template](./appendable-template)|:x:|:x:|:heavy_check_mark:|:heavy_check_mark:|
 |[Hyperparameter Tutorial](./hyperparameter-tutorial)|:x:|:x:|:heavy_check_mark:|:heavy_check_mark:|
 |[Image classification with Tensorflow and Keras](./image-classification-tensorflow)|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|:heavy_check_mark:|

@@ -1,0 +1,36 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+type: command
+
+name: data_split
+display_name: Split data to train and val sets prior to training
+description: Split data to train and val sets prior to training
+
+inputs:
+  input_data_path:
+    type: mltable
+  use_stratified_split:
+    type: boolean
+  stratified_split_n_fold:
+    type: integer
+  mandatory_train_filenames:
+    type: string  
+  mandatory_val_filenames:
+    type: string  
+outputs:
+  train_output_path:
+    type: mltable
+  val_output_path:
+    type: mltable
+code: ../../pipeline_steps/data_splitter_src
+command: >-
+  python -m main
+  --input-data-path ${{inputs.input_data_path}}
+  --use-stratified-split ${{inputs.use_stratified_split}}
+  --stratified-split-n-fold ${{inputs.stratified_split_n_fold}}
+  --mandatory-train-filenames "${{inputs.mandatory_train_filenames}}"
+  --mandatory-val-filenames "${{inputs.mandatory_val_filenames}}"
+  --train-output-path ${{outputs.train_output_path}}
+  --val-output-path ${{outputs.val_output_path}}
+environment:
+  conda_file: conda.yml
+  image: "mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04"

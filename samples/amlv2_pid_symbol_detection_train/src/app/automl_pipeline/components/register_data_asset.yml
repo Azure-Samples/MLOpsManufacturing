@@ -1,0 +1,30 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+type: command
+
+name: register_data_asset
+display_name: Registering data asset
+description: Registering data asset
+
+inputs:
+  train_input_path:
+    type: mltable
+  val_input_path:
+    type: mltable
+  use_stratified_split:
+    type: boolean
+  data_store_name:
+    type: string
+outputs:
+  output_path:
+    type: string
+code: ../../pipeline_steps/register_data_asset_src
+command: >-
+  python -m main
+  --train-input-path ${{inputs.train_input_path}}
+  --val-input-path ${{inputs.val_input_path}}
+  --use-stratified-split ${{inputs.use_stratified_split}}
+  --data-store-name ${{inputs.data_store_name}}
+  --output-path ${{outputs.output_path}}
+environment:
+  conda_file: conda.yml
+  image: "mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04"

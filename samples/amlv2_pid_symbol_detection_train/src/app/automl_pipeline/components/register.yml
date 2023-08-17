@@ -1,0 +1,35 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+type: command
+
+name: register_model
+display_name: Register the Symbol Detection Model
+description: Register the Symbol Detection Model
+
+inputs:
+  model_input_path:
+    type: mlflow_model
+  model_base_name:
+    type: string
+  build_source:
+    type: string
+  build_id:
+    type: string
+  dataset_version:
+    type: uri_file
+    
+outputs:
+  model_metadata_path:
+    type: uri_folder
+
+code: ../../pipeline_steps/register_src
+command: >-
+  python -m main
+  --model-input-path ${{inputs.model_input_path}}
+  --model-base-name ${{inputs.model_base_name}}
+  --build-source ${{inputs.build_source}}
+  --build-id ${{inputs.build_id}}
+  --model-metadata-path ${{outputs.model_metadata_path}}
+  --dataset-version ${{inputs.dataset_version}}
+environment:
+  conda_file: conda.yml
+  image: "mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04"
