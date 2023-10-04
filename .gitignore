@@ -114,6 +114,7 @@ condaenv.*
 .DS_Store
 data/
 *.txt
+!requirements*.txt
 .azureml/
 azureml-models/
 config.json

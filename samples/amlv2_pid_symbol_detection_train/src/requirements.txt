@@ -1,0 +1,16 @@
+azure-storage-blob==12.13.0
+azureml-core==1.49.0
+azureml-mlflow==1.49.0
+opencv-python>=4.7.0
+
+azureml-contrib-services==1.49.0
+
+parameterized==0.9.0
+pytest-cov
+flake8
+azure-ai-ml
+azure-identity
+python-dotenv
+jsonlines
+pandas
+scikit-learn
