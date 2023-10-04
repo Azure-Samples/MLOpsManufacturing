@@ -170,7 +170,7 @@
             "args": [
                 "--is-local-deployment",
                 "--environment-image",
-                "apmpnidemlreg.azurecr.io/inference-container-cpu:1.0.0"
+                "piddetection.azurecr.io/inference-container-cpu:1.0.0"
             ]
         }
     ]
