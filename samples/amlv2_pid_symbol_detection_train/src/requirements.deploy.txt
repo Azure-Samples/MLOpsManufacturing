@@ -1,0 +1,4 @@
+flake8
+azure-ai-ml
+azure-identity
+python-dotenv

@@ -1,0 +1,161 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Creating ML Pipeline",
+            "type": "python",
+            "request": "launch",
+            "module": "automl_pipeline.pipeline",
+            "justMyCode": false,
+            "cwd": "${workspaceFolder}/src/app/"
+        },
+        {
+            "name": "Python: Unzip & Upload local files",
+            "type": "python",
+            "request": "launch",
+            "module": "automl_pipeline.setup.synthetic_images_uploader",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}/src/app/",
+            "args": [
+                "--raw-blob-sas-url",
+                "",
+                "--raw-input-path",
+                "data/raw/DigitizePID_Dataset.zip",
+                "--image-output-path",
+                "data/images",
+                "--label-output-path",
+                "data/labels"
+            ]
+        },
+        {
+            "name": "Python: Upload local files",
+            "type": "python",
+            "request": "launch",
+            "module": "automl_pipeline.utils.uploader_client",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}/src/app",
+            "args": [
+                "--image-output-path",
+                "data/images",
+                "--label-output-path",
+                "data/labels"
+            ]
+        },
+        {
+            "name": "Python: Pipeline Step - Data Aggregation",
+            "type": "python",
+            "request": "launch",
+            "module": "pipeline_steps.data_aggregation_src.main",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}/src/app",
+            "envFile": "${workspaceFolder}/src/.env",
+            "args": [
+                "--input-image-data-path",
+                "${env:INPUT_IMAGE_DATA_PATH}",
+                "--input-label-data-path",
+                "${env:INPUT_LABEL_DATA_PATH}",
+                "--input-images-string-absolute-path",
+                "${env:INPUT_IMAGE_DATA_PATH}",
+                "--output-path",
+                ""
+            ]
+        },
+        {
+            "name": "Python: Pipeline Step - Data Split",
+            "type": "python",
+            "request": "launch",
+            "module": "pipeline_steps.data_splitter_src.main",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}/src/app",
+            "envFile": "${workspaceFolder}/src/.env",
+            "args": [
+                "--input-data-path",
+                "sample_artifacts/register_data_asset/input/annotations.jsonl",
+                "--use-stratified-split",
+                "${env:USE_STRATIFIED_SPLIT}",
+                "--stratified-split-n-fold",
+                "${env:STRATIFIED_SPLIT_N_FOLD}",
+                "--mandatory-train-filenames",
+                "${env:MANDATORY_TRAIN_FILENAMES}",
+                "--mandatory-val-filenames",
+                "${env:MANDATORY_VAL_FILENAMES}",
+                "--train-output-path",
+                "train",
+                "--val-output-path",
+                "val"
+            ]
+        },
+        {
+            "name": "Python: Registering data asset",
+            "type": "python",
+            "request": "launch",
+            "module": "pipeline_steps.register_data_asset_src.main",
+            "args": [
+                "--train-input-path",
+                "sample_artifacts/register_data_asset/input/annotations.jsonl",
+                "--val-input-path",
+                "sample_artifacts/register_data_asset/input/annotations.jsonl",
+                "--output-path",
+                "--use-stratified-split",
+                "${env:USE_STRATIFIED_SPLIT}",
+                "sample_artifacts/register_data_asset/output/",
+                "--data-store-name",
+                "workspaceblobstore"
+            ],
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}/src/app"
+        },
+        {
+            "name": "Python: Pipeline Step - Tag Model",
+            "type": "python",
+            "request": "launch",
+            "module": "pipeline_steps.tag_src.main",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}/src/app",
+            "args": [
+                "--model-metadata-path",
+                "sample_artifacts/tag",
+                "--model-base-name",
+                "pid_object_detection_model",
+                "--best-model-metadata-path",
+                "sample_artifacts/tag"
+            ]
+        },
+        {
+            "name": "Python: Pipeline Step - Register Model",
+            "type": "python",
+            "request": "launch",
+            "module": "pipeline_steps.register_src.main",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}/src/app",
+            "args": [
+                "--model-input-path",
+                "sample_artifacts/register",
+                "--model-base-name",
+                "pid_object_detection_model",
+                "--build-source",
+                "local",
+                "--build-id",
+                "local-build-1",
+                "--model-metadata-path",
+                "sample_artifacts/register"
+            ]
+        },
+        {
+            "name": "Python: Local Endpoint Deployment",
+            "type": "python",
+            "request": "launch",
+            "module": "automl_pipeline.deploy.main",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}/src/app",
+            "args": [
+                "--is-local-deployment",
+                "--environment-image",
+                "piddetection.azurecr.io/inference-container-cpu:1.0.0"
+            ]
+        }
+    ]
+}
