@@ -13,22 +13,6 @@
             "cwd": "${workspaceFolder}/src/app/"
         },
         {
-            "name": "Python: Create Azure ML Environment",
-            "type": "python",
-            "request": "launch",
-            "module": "automl_pipeline.mlops.create_environment",
-            "justMyCode": true,
-            "cwd": "${workspaceFolder}/src/app",
-            "args": [
-                "--environment-name",
-                "pid-environment",
-                "--environment-image",
-                "mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04",
-                "--environment-description",
-                "Environment belonging to Azure ML Python SDK v2 PID processing project"
-            ]
-        },
-        {
             "name": "Python: Unzip & Upload local files",
             "type": "python",
             "request": "launch",
